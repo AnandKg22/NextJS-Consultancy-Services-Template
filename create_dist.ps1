@@ -1,33 +1,24 @@
-Write-Host "📦 Creating Distribution Package..." -ForegroundColor Cyan
+Write-Host "Creating Distribution Package..."
 
-$sourceDir = Get-Location
-$distDir = "$sourceDir\dist_temp"
 $zipName = "Consultancy-Template-v1.0.zip"
+$source = Get-Location
+$dest = "$source\dist_temp"
 
-# 1. Clean previous runs
-if (Test-Path $distDir) { Remove-Item -Recurse -Force $distDir }
+if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
 if (Test-Path $zipName) { Remove-Item -Force $zipName }
 
-# 2. Create Temp Directory
-New-Item -ItemType Directory -Force -Path $distDir | Out-Null
+New-Item -ItemType Directory -Force -Path $dest | Out-Null
 
-# 3. Copy Files (Excluding heavy/hidden folders)
-$exclude = @('.git', '.next', 'node_modules', '.env', '.env.local', 'dist_temp', '*.zip', 'build_error.log')
+$exclude = @('.git', '.next', 'node_modules', '.env', '.env.local', 'dist_temp', '*.zip', 'build_error.log', 'create_dist.ps1')
 
-Get-ChildItem -Path $sourceDir | Where-Object { 
-    $exclude -notcontains $_.Name 
-} | ForEach-Object {
-    Copy-Item -Path $_.FullName -Destination $distDir -Recurse
+Get-ChildItem -Path $source | Where-Object { $exclude -notcontains $_.Name } | ForEach-Object {
+    Copy-Item -Path $_.FullName -Destination $dest -Recurse
 }
 
-Write-Host "✅ Files copied to clean directory." -ForegroundColor Green
+Compress-Archive -Path "$dest\*" -DestinationPath $zipName
 
-# 4. Zip It
-Write-Host "⏳ Zipping files... (This may take a moment)" -ForegroundColor Yellow
-Compress-Archive -Path "$distDir\*" -DestinationPath $zipName
+Remove-Item -Recurse -Force $dest
 
-# 5. Cleanup Temp
-Remove-Item -Recurse -Force $distDir
-
-Write-Host "🎉 Success! Created: $zipName" -ForegroundColor Green
-Write-Host "You can upload this file to your marketplace." -ForegroundColor Gray
+Write-Host "Success! Created: $zipName"
+Write-Host "Press Enter to exit..."
+Read-Host
