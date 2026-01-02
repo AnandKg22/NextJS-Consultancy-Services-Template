@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
     return (
-        <main className="min-h-screen pt-[120px] lg:pt-[150px]">
+        <main className="min-h-screen pt-[100px] lg:pt-[150px]">
             <PageHeader title="News & Updates" breadcrumb="News" />
             <NewsGrid />
             <HomeCTA />

@@ -10,7 +10,7 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, breadcrumb }: PageHeaderProps) {
     return (
-        <div className="relative h-[300px] bg-gray-900 flex items-center justify-center">
+        <div className="relative h-[300px] bg-gray-900 flex items-center justify-center -mt-6 lg:-mt-8">
             {/* Background Image (Placeholder for now, or could be prop) */}
             <div
                 className="absolute inset-0 bg-cover bg-center opacity-50"

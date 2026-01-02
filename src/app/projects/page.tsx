@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
     return (
-        <main className="min-h-screen pt-[120px] lg:pt-[150px]">
+        <main className="min-h-screen pt-[100px] lg:pt-[150px]">
             <PageHeader title="Our Projects" breadcrumb="Projects" />
             <ProjectsGallery />
             <HomeCTA />
