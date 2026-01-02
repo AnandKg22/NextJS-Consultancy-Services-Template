@@ -1,16 +1,100 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme {
-  --color-corporate-blue: #002e5b;
-  --color-corporate-orange: #ffad18;
+  --color-corporate-blue: var(--corporate-blue);
+  --color-corporate-orange: var(--corporate-orange);
 
   --font-oswald: var(--font-oswald);
   --font-lato: var(--font-lato);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Default Branding (Blue/Orange) */
+  --corporate-blue: #002e5b;
+  --corporate-orange: #ffad18;
+}
+
+/* Theme Presets */
+
+/* 1. Default (Blue/Orange) - Already set in :root, but explicit override if needed */
+[data-theme="default"] {
+  --corporate-blue: #002e5b;
+  --corporate-orange: #ffad18;
+}
+
+/* 2. Corporate (Navy/Gold) */
+[data-theme="corporate"] {
+  --corporate-blue: #1e3a8a;
+  /* Blue 900 */
+  --corporate-orange: #d97706;
+  /* Amber 600 */
+}
+
+/* 3. Nature (Green/Lime) */
+[data-theme="nature"] {
+  --corporate-blue: #15803d;
+  /* Green 700 */
+  --corporate-orange: #84cc16;
+  /* Lime 500 */
+}
+
+/* 4. Tech (Purple/Yellow) */
+[data-theme="tech"] {
+  --corporate-blue: #7e22ce;
+  /* Purple 700 */
+  --corporate-orange: #eab308;
+  /* Yellow 500 */
+}
+
+/* 5. Modern (Black/Red) */
+[data-theme="modern"] {
+  --corporate-blue: #18181b;
+  /* Zinc 900 */
+  --corporate-orange: #ef4444;
+  /* Red 500 */
+}
+
+/* 6. Trust (Teal/Silver - Gray) */
+[data-theme="trust"] {
+  --corporate-blue: #0f766e;
+  /* Teal 700 */
+  --corporate-orange: #94a3b8;
+  /* Slate 400 */
+}
+
+/* 7. Creative (Pink/Indigo) */
+[data-theme="creative"] {
+  --corporate-blue: #be185d;
+  /* Pink 700 */
+  --corporate-orange: #6366f1;
+  /* Indigo 500 */
+}
+
+/* 8. Elegant (Slate/Bronze - Orange) */
+[data-theme="elegant"] {
+  --corporate-blue: #334155;
+  /* Slate 700 */
+  --corporate-orange: #c2410c;
+  /* Orange 700 */
+}
+
+/* 9. Vibrant (Electric Blue/Neon) */
+[data-theme="vibrant"] {
+  --corporate-blue: #2563eb;
+  /* Blue 600 */
+  --corporate-orange: #f472b6;
+  /* Pink 400 */
+}
+
+/* 10. Warm (Brown/Beige - Amber) */
+[data-theme="warm"] {
+  --corporate-blue: #78350f;
+  /* Amber 900 */
+  --corporate-orange: #d97706;
+  /* Amber 600 */
 }
 
 body {

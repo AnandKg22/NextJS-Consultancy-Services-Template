@@ -25,6 +25,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { ThemeCustomizer } from "@/components/theme/ThemeCustomizer";
 
 export default function RootLayout({
   children,
@@ -32,14 +34,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${oswald.variable} ${lato.variable} antialiased font-lato`}
       >
-        <Header />
-        {children}
-        <SpeedInsights />
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <SpeedInsights />
+          <ThemeCustomizer />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
