@@ -3,7 +3,7 @@ import { DEMO_POSTS } from "@/data/demoContent";
 import PageHeader from "@/components/layout/PageHeader";
 import NewsGrid from "@/components/news/NewsGrid";
 import NewsSidebar from "@/components/news/NewsSidebar";
-import HomeCTA from "@/components/home/HomeCTA";
+import ServiceCTA from "@/components/services/ServiceCTA";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default async function NewsPage(rootParams: any) {
     <main className="min-h-screen pt-[100px] lg:pt-[150px]">
       <PageHeader title="News & Updates" breadcrumb="News" />
       <NewsGrid posts={posts} sidebar={<NewsSidebar />} />
-      <HomeCTA />
+      <ServiceCTA />
     </main>
   );
 }
