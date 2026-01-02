@@ -32,7 +32,7 @@ function PieChart({ percentage, label }: { percentage: number; label: string }) 
                         cx="50%"
                         cy="50%"
                         r={radius}
-                        stroke="#ffad18"
+                        stroke="var(--color-corporate-orange)"
                         strokeWidth="8"
                         strokeLinecap="round"
                         fill="transparent"

@@ -5,5 +5,5 @@ export const themeConfig = {
 
     // The default theme ID (corresponds to the data-theme attribute in globals.css)
     // Options: 'default', 'corporate', 'nature', 'tech', 'modern', 'trust', 'creative', 'elegant', 'vibrant', 'warm'
-    defaultTheme: 'nature'
+    defaultTheme: 'default'
 };

@@ -99,7 +99,7 @@ export default function Testimonials() {
                 opacity: 0.5;
             }
             .slick-dots li.slick-active button:before {
-                color: #ffad18; /* Corporate Orange */
+                color: var(--color-corporate-orange); /* Corporate Orange */
                 opacity: 1;
             }
         `}</style>
