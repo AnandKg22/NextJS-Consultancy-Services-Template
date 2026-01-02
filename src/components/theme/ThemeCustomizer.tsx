@@ -56,6 +56,13 @@ export function ThemeCustomizer() {
         return null;
     }
 
+    // Hide on Studio route
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+    if (pathname.startsWith('/studio')) {
+        return null;
+    }
+
     return (
         <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
             {/* Preset Picker */}
@@ -85,6 +92,49 @@ export function ThemeCustomizer() {
                                 )}
                             </button>
                         ))}
+
+                        {/* Divider */}
+                        <div className="border-t border-gray-100 my-2"></div>
+
+                        <p className="px-2 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 bg-white z-10 border-b border-gray-100 mb-1">
+                            Header Style
+                        </p>
+                        <div className="px-2 pb-2 space-y-1">
+                            {['dark', 'white', 'primary'].map((style) => (
+                                <button
+                                    key={style}
+                                    onClick={() => {
+                                        localStorage.setItem("sticky-header-style", style);
+                                        window.dispatchEvent(new CustomEvent('sticky-header-change', { detail: style }));
+                                        // Force re-render not strictly needed as Navbar listens, but we could update local state if we tracked it here
+                                    }}
+                                    className="w-full text-left flex items-center justify-between rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wide transition-colors text-gray-600 hover:bg-gray-50 hover:text-corporate-orange"
+                                >
+                                    {style.charAt(0).toUpperCase() + style.slice(1)} Header
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Divider */}
+                        <div className="border-t border-gray-100 my-2"></div>
+
+                        <p className="px-2 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 bg-white z-10 border-b border-gray-100 mb-1">
+                            Footer Style
+                        </p>
+                        <div className="px-2 pb-2 space-y-1">
+                            {['dark', 'primary', 'secondary'].map((style) => (
+                                <button
+                                    key={style}
+                                    onClick={() => {
+                                        localStorage.setItem("footer-style", style);
+                                        window.dispatchEvent(new CustomEvent('footer-style-change', { detail: style }));
+                                    }}
+                                    className="w-full text-left flex items-center justify-between rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wide transition-colors text-gray-600 hover:bg-gray-50 hover:text-corporate-orange"
+                                >
+                                    {style.charAt(0).toUpperCase() + style.slice(1)} Footer
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
