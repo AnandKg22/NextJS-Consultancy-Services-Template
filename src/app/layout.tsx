@@ -21,12 +21,13 @@ export const metadata: Metadata = {
   description: "Leading consultancy firm providing business planning, financial advice, and strategic solutions.",
 };
 
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Shell from "@/components/layout/Shell";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ThemeCustomizer } from "@/components/theme/ThemeCustomizer";
+import BackToTop from "@/components/common/BackToTop";
+import CookieConsent from "@/components/common/CookieConsent";
 
 export default function RootLayout({
   children,
@@ -44,11 +45,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <Shell>
+            {children}
+          </Shell>
           <SpeedInsights />
           <ThemeCustomizer />
-          <Footer />
+          <BackToTop />
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>

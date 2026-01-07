@@ -1,7 +1,7 @@
 import PageHeader from "@/components/layout/PageHeader";
 import ServicesGrid from "@/components/services/ServicesGrid";
 import PricingTable from "@/components/services/PricingTable";
-import HomeCTA from "@/components/home/HomeCTA";
+import ServiceCTA from "@/components/services/ServiceCTA";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function ServicesPage() {
             <PageHeader title="Our Services" breadcrumb="Services" />
             <ServicesGrid />
             <PricingTable />
-            <HomeCTA />
+            <ServiceCTA />
         </main>
     );
 }
